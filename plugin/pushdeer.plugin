@@ -1,0 +1,15 @@
+#!name = pushdeer去广告
+#!desc = pushdeer去推广
+#!openUrl = 
+#!author = color
+#!homepage = https://raw.githubusercontent.com/xilemon/loon/main/plugin/pushdeer.plugin
+#!icon = https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Tom-Jerry/Tom-Jerry-1046.png
+#!date = 2023-11-19 20:00:00
+
+
+[Script]
+http-response ^https:\/\/api2\.pushdeer\.com\/message\/list script-path = https://raw.githubusercontent.com/xilemon/loon/main/script/pushdeer.js, requires-body = true, tag = 清除pushdeer推广
+
+
+[Mitm]
+hostname = api2.pushdeer.com
