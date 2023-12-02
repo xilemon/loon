@@ -8,6 +8,6 @@
 
 |#|名称|链接|raw|备注|
 |:----:|:----|:----:|:----:|:----:|
-|0|合集|[跳转](/plugin/ad2all.plugin)|[跳转](https://raw.githubusercontent.com/xilemon/loonx/main/plugin/ad2all.plugin)| |
+|0|合集|[跳转](/plugin/ad2all.plugin)|[跳转](https://raw.githubusercontent.com/xilemon/loon/main/plugin/ad2all.plugin)| |
 |1|pushdeer|[跳转](/plugin/pushdeer.plugin)|-|无效|
 |-| | | |
