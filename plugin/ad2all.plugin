@@ -1,0 +1,59 @@
+#!name = 自定义广告屏蔽
+#!desc = 自用广告屏蔽插件
+#!openUrl = 
+#!author = color233
+#!homepage = https://github.com/xilemon/loon/blob/main/plugin/README.md
+#!icon = https://raw.githubusercontent.com/Toperlock/Quantumult/main/icon/Stitch/Stitch-1011.png
+#!date = 2023-12-2 20:00:00
+
+[Rule]
+
+# 屏蔽抖音商店
+DOMAIN-SUFFIX, ecombdimg.com, REJECT
+DOMAIN-SUFFIX, ecombdapi.com, REJECT
+
+# 屏蔽小红书商店
+URL-REGEX, ^https:\/\/www\.xiaohongshu\.com\/api\/store, REJECT
+
+
+[Rewrite]
+# 01 屏蔽酷安
+# 开屏
+^http:\/\/p26-be-pack-sign\.pglstatp-toutiao\.com\/web\.business\.image\/ reject-dict
+# 买过
+https?:\/\/api\.coolapk\.com\/v6\/page\/dataList\?*.*url=\/page\?url=V13_FIND_OPENSHOW reject-dict
+# 评分
+https?:\/\/api\.coolapk\.com\/v6\/page\/dataList\?*.*url=\/page\?url=V13_PINGFEN reject-dict
+# 二手
+https?:\/\/api\.coolapk\.com\/v6\/page\/dataList\?*.*url=\/page\?url=IOS_FIND_ERSHOU reject-dict
+# 好物
+https?:\/\/api\.coolapk\.com\/v6\/page\/dataList\?*.*(url=/page\?url=V12_FIND_KUBANG|url=V11_FIND_GOOD_GOODS_HOME) reject-dict
+# 酷品
+https?:\/\/api\.coolapk\.com\/v6\/page\/dataList\?*.*(url=\/page\?url=V11_FIND_GOODS|url=\/page\?url%3DV11_FIND_GOODS|url=V11_FIND_GOODS) reject-dict
+# 商品详情(点击不跳转)
+^https:\/\/api\.coolapk\.com\/v6\/goods url reject-dict
+^http:\/\/image\.coolapk\.com\/(goods_cover|goods) reject-dict
+
+
+# 02 部分跳淘宝
+https?:\/\/s\.click\.taobao\.com\/ reject-dict
+
+# 03 京东
+# 部分跳京东
+https?:\/\/union\.click\.jd\.com/jda? reject-dict
+# 京东逛逛
+^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(getBubbleFrequencyRuleInfo|getRecommendNewFeedsList|discFollowEnterMainPage|userTalentInfo|disc_recommend_koc_pop|uploadPageView|video_authorLiveInfo|discoveryPageView|video_videoDetail|videoHbGoldCoin_done) reject-dict
+# 屏蔽京东白条
+^https:\/\/ms\.jr\.jd\.com\/gw2\/generic\/simpleBt\/newh5\/m\/loadBaseInfo reject-dict
+^https:\/\/ms\.jr\.jd\.com\/gw2\/generic\/simpleBt\/h5\/m\/loadBaseInfo reject-dict
+# 屏蔽京东金条
+^https:\/\/ms\.jr\.jd\.com\/gw\/generic\/bt\/newh5\/m\/currMaterielFloor reject-dict
+
+# 04 微博轻享版
+# 屏蔽推荐和关注中穿插的广告
+^https:\/\/bootrealtime\.uve\.weibo\.com\/v2\/ad\/ reject-dict
+^https:\/\/api\.weibo\.cn\/2\/ad\/ reject-dict
+
+
+[Mitm]
+hostname = p26-be-pack-sign.pglstatp-toutiao.com, api.coolapk.com, image.coolapk.com, s.click.taobao.com, union.click.jd.com, api.m.jd.com, ms.jr.jd.com, bootrealtime.uve.weibo.com, api.weibo.cn
